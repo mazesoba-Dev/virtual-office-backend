@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  app:
+    build: ./
+    platform: linux/amd64
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+      - node_modules:/usr/app/node_modules
+    depends_on:
+      - db
+    command: sh -c "npm start"
+    tty: true
+
+  db:
+    image: mysql:8.0.28
+    platform: linux/amd64
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: development
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+volumes:
+  node_modules:
