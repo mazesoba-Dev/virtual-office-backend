@@ -1,3 +1,2 @@
 console.log('hgoe')
-console.log('kanta hasegawa'
-)
+console.log('kanta hasegawa')
