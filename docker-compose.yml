@@ -11,7 +11,7 @@ services:
       - node_modules:/usr/app/node_modules
     depends_on:
       - db
-    command: sh -c "npm start"
+    command: sh -c "npm run dev"
     tty: true
 
   db:

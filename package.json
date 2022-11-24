@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node main.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/main.js",
+    "build": "npx tsc",
+    "dev": "npx tsc-watch --onSuccess \"npm start\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "ts-node": "^10.9.1",
+    "tsc-watch": "^5.0.3",
     "typescript": "^4.8.4"
   }
 }
