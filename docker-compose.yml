@@ -25,5 +25,6 @@ services:
       TZ: "Asia/Tokyo"
     volumes:
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./src/db:/docker-entrypoint-initdb.d
 volumes:
   node_modules:
