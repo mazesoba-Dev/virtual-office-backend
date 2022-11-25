@@ -1,10 +1,22 @@
-const express = require("express");
-const app = express();
+import {ReplicacheExpressServer} from 'replicache-express';
+import type { WriteTransaction } from 'replicache';
 
-app.get("/", function (req: any, res: any) {
-  res.send("Hello World!");
-});
+const port = 3000
+const mutators = {
+  testMutator: async (tx: WriteTransaction) => {
+   new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('こんにちは');
+    }, 300);
+    });
+  }
+}
+const options = {
+  mutators,
+  port,
+  host: process.env.HOST || '0.0.0.0',
+};
 
-app.listen(3000, function () {
-  console.log("Example app listening on port 3000!");
+ReplicacheExpressServer.start(options, () => {
+  console.log(`Server listening on ${options.host}:${options.port}`);
 });
