@@ -1,5 +1,6 @@
-import {ReplicacheExpressServer} from 'replicache-express';
+import {ReplicacheExpressServer} from 'replicache-express-mongo';
 import type { WriteTransaction } from 'replicache';
+import { Request, Response } from 'express';
 
 const port = 3000
 const mutators = {
@@ -17,6 +18,12 @@ const options = {
   host: process.env.HOST || '0.0.0.0',
 };
 
-ReplicacheExpressServer.start(options, () => {
+const r = new ReplicacheExpressServer(options)
+
+r.app.get("/test", (req: Request, res: Response) => {
+  res.send("つながったよ")
+})
+
+r.start(() => {
   console.log(`Server listening on ${options.host}:${options.port}`);
 });
