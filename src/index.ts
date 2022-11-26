@@ -1,6 +1,7 @@
-import {ReplicacheExpressServer} from 'replicache-express';
+import {ReplicacheExpressServer} from 'replicache-express-mongo';
 import type { WriteTransaction } from 'replicache';
 import {MongoClient}  from "mongodb" ;
+import { Request, Response } from 'express';
 
 const port = 3000
 
@@ -48,6 +49,9 @@ try {
 }
 run().catch(console.dir);
   res.send('OKだよ〜')
+
+r.app.get("/test", (req: Request, res: Response) => {
+  res.send("つながったよ")
 })
 
 r.start(() => {
