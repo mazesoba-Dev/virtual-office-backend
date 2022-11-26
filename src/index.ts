@@ -37,11 +37,18 @@ try {
 
   // Establish and verify connection
   const database = client.db('development');
-  const users = database.collection('user');
-  await users.insertOne({name: 'taisei'})
-  const result = await users.count();
-  console.log("繋がってるよ〜");
-  console.log(result);
+  const messages = 'messages'
+
+  database.createCollection(messages);
+  const collection = database.collection(messages)
+
+  await collection.insertOne({
+    message: 'message',
+    send_user: 'taisei',
+    created_at: '',
+    space_id: 'default',
+    version: 1
+  })
 } finally {
   // Ensures that the client will close when you finish/error
   await client.close();
