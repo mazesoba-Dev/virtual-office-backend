@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mazesoba-Dev/virtual-office-backend#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "replicache": "^11.2.0",
     "replicache-express": "^0.1.6",
